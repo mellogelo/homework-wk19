@@ -23,24 +23,39 @@ import Switch from '@material-ui/core/Switch';
 import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
+// function createData(name, calories, fat, carbs, protein) {
+//   return { name, calories, fat, carbs, protein };
+// }
+
+function createEmployeeData(name, position, department, level, salary) {
+  return { name, position, department, level, salary };
 }
 
 const rows = [
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Donut', 452, 25.0, 51, 4.9),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-  createData('Honeycomb', 408, 3.2, 87, 6.5),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Jelly Bean', 375, 0.0, 94, 0.0),
-  createData('KitKat', 518, 26.0, 65, 7.0),
-  createData('Lollipop', 392, 0.2, 98, 0.0),
-  createData('Marshmallow', 318, 0, 81, 2.0),
-  createData('Nougat', 360, 19.0, 9, 37.0),
-  createData('Oreo', 437, 18.0, 63, 4.0),
+  createEmployeeData('Scott', 'Sales Person', 'Sales', 'Junior', 40000),
+  createEmployeeData('Devin', 'Graphic Designer', 'Design', 'Junior', 35000), 
+  createEmployeeData('Dan', 'Sales Person', 'Sales', 'Senior', 60000),
+  createEmployeeData('Shay', 'Manager', 'Operations', 'Senior', 70000),
+  createEmployeeData('Abel', 'IT', 'Tech', 'Junior', 40000),
+  createEmployeeData('Lorenz', 'Sales Mangager', 'Sales', 'Senior', 55000),
+  createEmployeeData('Johnny', 'Art Director', 'Design', 'Senior', 70000),
+  createEmployeeData('Nadeen', 'Accountant', 'Operations', 'Senior', 70000),
+  createEmployeeData('Jack', 'Data Analyst', 'Tech', 'Junior', 60000),
+  createEmployeeData('Bronson', 'Developer', 'Tech', 'Senior', 80000),
+  createEmployeeData('Jill', 'Software Engineer', 'Tech', 'Junior', 60000)
+  // createData('Cupcake', 305, 3.7, 67, 4.3),
+  // createData('Donut', 452, 25.0, 51, 4.9),
+  // createData('Eclair', 262, 16.0, 24, 6.0),
+  // createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
+  // createData('Gingerbread', 356, 16.0, 49, 3.9),
+  // createData('Honeycomb', 408, 3.2, 87, 6.5),
+  // createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
+  // createData('Jelly Bean', 375, 0.0, 94, 0.0),
+  // createData('KitKat', 518, 26.0, 65, 7.0),
+  // createData('Lollipop', 392, 0.2, 98, 0.0),
+  // createData('Marshmallow', 318, 0, 81, 2.0),
+  // createData('Nougat', 360, 19.0, 9, 37.0),
+  // createData('Oreo', 437, 18.0, 63, 4.0),
 ];
 
 function descendingComparator(a, b, orderBy) {
@@ -70,11 +85,11 @@ function stableSort(array, comparator) {
 }
 
 const headCells = [
-  { id: 'name', numeric: false, disablePadding: true, label: 'Dessert (100g serving)' },
-  { id: 'calories', numeric: true, disablePadding: false, label: 'Calories' },
-  { id: 'fat', numeric: true, disablePadding: false, label: 'Fat (g)' },
-  { id: 'carbs', numeric: true, disablePadding: false, label: 'Carbs (g)' },
-  { id: 'protein', numeric: true, disablePadding: false, label: 'Protein (g)' },
+  { id: 'name', numeric: false, disablePadding: true, label: 'Employee Name' },
+  { id: 'position', numeric: false, disablePadding: false, label: 'Position' },
+  { id: 'department', numeric: false, disablePadding: false, label: 'Department' },
+  { id: 'level', numeric: false, disablePadding: false, label: 'Level' },
+  { id: 'salary', numeric: true, disablePadding: false, label: 'Salary' },
 ];
 
 function EnhancedTableHead(props) {
@@ -159,7 +174,7 @@ const EnhancedTableToolbar = (props) => {
         </Typography>
       ) : (
         <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
-          Nutrition
+          Employee Directory
         </Typography>
       )}
 
@@ -309,10 +324,10 @@ export default function EnhancedTable() {
                       <TableCell component="th" id={labelId} scope="row" padding="none">
                         {row.name}
                       </TableCell>
-                      <TableCell align="right">{row.calories}</TableCell>
-                      <TableCell align="right">{row.fat}</TableCell>
-                      <TableCell align="right">{row.carbs}</TableCell>
-                      <TableCell align="right">{row.protein}</TableCell>
+                      <TableCell align="left">{row.position}</TableCell>
+                      <TableCell align="left">{row.department}</TableCell>
+                      <TableCell align="left">{row.level}</TableCell>
+                      <TableCell align="left">{row.salary}</TableCell>
                     </TableRow>
                   );
                 })}
